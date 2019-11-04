@@ -1,0 +1,39 @@
+<form #form="ngForm"  autocomplete="off" *ngIf="contactListService.newContact">
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Name</th>
+    <th scope="col">Address</th>
+    <th scope="col">City</th>
+    <th scope="col">Phone</th>
+    <th scope="col">Mobile</th>
+    <th scope="col"></th>
+    <th scope="col"></th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th><input type="hidden" name="_id" class="form-control" #name="ngModel" [(ngModel)]="contactListService.newContact._id"></th>
+      <td><input type="text" name="name" class="form-control" #name="ngModel" [(ngModel)]="contactListService.newContact.name"></td>
+      <td><input type="text" name="address" class="form-control" #address="ngModel" [(ngModel)]="contactListService.newContact.address"></td>
+      <td><input type="text" name="city" class="form-control" #city="ngModel" [(ngModel)]="contactListService.newContact.city"></td>
+      <td><input type="text" name="phone" class="form-control" #phone="ngModel" [(ngModel)]="contactListService.newContact.phone"></td>
+      <td><input type="text" name="mobile" class="form-control" #mobile="ngModel" [(ngModel)]="contactListService.newContact.mobile"></td>
+      <td *ngIf="contactListService.newContact._id===null"><button (click)="createContact(contactListService.newContact)" type="button" class="btn btn-success">Add</button></td>
+      <td *ngIf="contactListService.newContact._id!==null"><button (click)="createContact(contactListService.newContact)" type="button" class="btn btn-success">Update</button></td>
+      <td><button (click)="resetForm()" type="button" class="btn btn-success">Clear</button></td>
+    </tr>
+    <tr *ngFor="let contact of contacts; index as i">
+    <th scope="row">{{ i + 1 }}</th>
+    <td contenteditable="true">{{ contact.name }}</td>
+    <td>{{ contact.address }}</td>
+    <td>{{ contact.city}}</td>
+    <td>{{ contact.phone}}</td>
+    <td>{{ contact.mobile}}</td>
+    <td><button (click)="editContact(contact)" type="button" class="btn btn-warning">Edit</button></td>
+    <td><button (click)="deleteContact(contact)" type="button" class="btn btn-danger">Delete</button></td>
+  </tr>
+  </tbody>
+</table>
+</form>
