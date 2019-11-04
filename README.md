@@ -5,6 +5,7 @@
 * Latest Node JS : from https://nodejs.org/en/
 * Git Client : https://git-scm.com/downloads
 * MongoDb server : https://www.mongodb.com/download-center
+* Install Angular 8
 
 
 ### Clone the Application
